@@ -8,7 +8,7 @@ public class AudioManager : MonoBehaviour
     public AudioSettings audioSettings;
     public AudioMixer audioMixer;
 
-    private void Start()
+    private void Start()    
     {
         LoadAudioSettings();
     }

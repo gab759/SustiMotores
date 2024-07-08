@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.Audio;
+
 public class CandyController : MonoBehaviour
 {
+
+    private AudioSource audioSource;
     public int points;
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Collector"))

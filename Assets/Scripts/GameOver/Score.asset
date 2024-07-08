@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aff9713478b5584f90139ad9002476b, type: 3}
-  m_Name: AudioSettings
+  m_Script: {fileID: 11500000, guid: 916315e1ee237d5418e01f7f01403ccc, type: 3}
+  m_Name: Score
   m_EditorClassIdentifier: 
-  masterVolume: 0
+  score: 19000000

@@ -6,23 +6,21 @@ using System;
 
 public class EfectSound : MonoBehaviour
 {
+    //nose puedo :c
     public static EfectSound Instance;
 
-    public static event Action OnWin;
     public static event Action OnLose;
     public static event Action OnButtonHover;
     public static event Action OnWallDamage;
-    public static event Action<int> OnEnemyDeathCoin;
     public static event Action OnEnemyDeathSoundCoin;
     public static event Action OnArrowShot;
 
     public AudioClip buttonHoverSound;
-    public AudioClip wallDamageSound;
+    public AudioClip wallDamageSound;   
     public AudioClip enemyDeathSound;
     public AudioClip arrowShotSound;
 
     private AudioSource audioSource;
-    private int enemyCount = 0;
 
     private void Awake()
     {
@@ -42,9 +40,7 @@ public class EfectSound : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         OnButtonHover += PlayButtonHoverSound;
         OnWallDamage += PlayWallDamageSound;
-        OnEnemyDeathSoundCoin += PlayEnemyDeathCoinSound;
         OnArrowShot += PlayArrowShotSound;
-        OnWin += GoWin;
         OnLose += GoLose;
     }
 
@@ -52,35 +48,17 @@ public class EfectSound : MonoBehaviour
     {
         OnButtonHover -= PlayButtonHoverSound;
         OnWallDamage -= PlayWallDamageSound;
-        OnEnemyDeathSoundCoin -= PlayEnemyDeathCoinSound;
         OnArrowShot -= PlayArrowShotSound;
-        OnWin -= GoWin;
         OnLose -= GoLose;
-    }
-
-    private void GoWin()
-    {
-        SceneManager.LoadScene("Win");
     }
 
     private void GoLose()
     {
         SceneManager.LoadScene("Lose");
     }
-
-    public void TriggerWin()
-    {
-        OnWin?.Invoke();
-    }
-
     public void TriggerLose()
     {
-        OnLose?.Invoke();
-    }
-
-    public void TriggerEnemyDeath(int coins)
-    {
-        OnEnemyDeathCoin?.Invoke(coins);
+        OnLose?.Invoke();   
     }
 
     public void TriggerEnemyDeathCoinSound()
@@ -93,28 +71,9 @@ public class EfectSound : MonoBehaviour
         OnButtonHover?.Invoke();
     }
 
-    public void TriggerWallDamage()
-    {
-        OnWallDamage?.Invoke();
-    }
-
     public void TriggerArrowShot()
     {
         OnArrowShot?.Invoke();
-    }
-
-    public void AddEnemy()
-    {
-        enemyCount++;
-    }
-
-    public void RemoveEnemy()
-    {
-        enemyCount--;
-        if (enemyCount <= 0)
-        {
-            TriggerWin();
-        }
     }
 
     private void PlayButtonHoverSound()
