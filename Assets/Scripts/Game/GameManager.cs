@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,7 +8,10 @@ public class GameManager : MonoBehaviour
 
     private void OnDisable() {
     }
-
+    public void GoGame()
+    {
+        SceneManager.LoadScene("Game");
+    }
     public void ManagePoints(CandyController candyInstance, PlayerManager playerInstance){
         playerInstance.score += candyInstance.points;
     }

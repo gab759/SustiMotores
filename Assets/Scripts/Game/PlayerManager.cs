@@ -16,11 +16,14 @@ public class PlayerManager : MonoBehaviour
         if(distance >= 1){
             score += (int) distance;
             distance = 0f;  
-        }
+        }   
         if (lives <= 0)
         {
-            Debug.Log("cAMBIASTE DE ESCENA");
+            SceneManager.LoadScene("GameOver");
         }
+        vidaText.text = "Vida: "+ lives;
+        scoreText.text = "Score: " + score;
+
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
